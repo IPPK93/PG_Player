@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file>play.png</file>
+        <file>pause.png</file>
+        <file>plus.png</file>
+        <file>skip-next.png</file>
+        <file>skip-previous.png</file>
+        <file>source.qrc</file>
+        <file>stop.png</file>
+        <file>shuffle.png</file>
+        <file>9dksh8DIjLA.jpg</file>
+        <file>X0Yb8fKRnDA.jpg</file>
+        <file>130898.png</file>
+        <file>5ee00035459021.42522331.jpg</file>
+    </qresource>
+</RCC>
