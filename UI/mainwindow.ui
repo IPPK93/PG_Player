@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>442</width>
+    <height>402</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -23,244 +29,272 @@
    <property name="styleSheet">
     <string notr="true"/>
    </property>
-   <widget class="QTableView" name="ViewPlaylists">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>130</y>
-      <width>161</width>
-      <height>151</height>
-     </rect>
-    </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QTableView" name="ViewSongs">
-    <property name="geometry">
-     <rect>
-      <x>160</x>
-      <y>110</y>
-      <width>211</width>
-      <height>171</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="AddPlaylist">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>110</y>
-      <width>80</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>playlist</string>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>../buttons/plus.png</normaloff>../buttons/plus.png</iconset>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="SortBy">
-    <property name="geometry">
-     <rect>
-      <x>80</x>
-      <y>110</y>
-      <width>80</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>sort by</string>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>../buttons/130898.png</normaloff>../buttons/130898.png</iconset>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="Shuffle">
-    <property name="geometry">
-     <rect>
-      <x>60</x>
-      <y>80</y>
-      <width>61</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>shuffle</string>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>../buttons/shuffle.png</normaloff>../buttons/shuffle.png</iconset>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="PreviousSong">
-    <property name="geometry">
-     <rect>
-      <x>120</x>
-      <y>80</y>
-      <width>51</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>prev</string>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>../buttons/skip-previous.png</normaloff>../buttons/skip-previous.png</iconset>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="NextSong">
-    <property name="geometry">
-     <rect>
-      <x>250</x>
-      <y>80</y>
-      <width>51</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>next</string>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>../buttons/skip-next.png</normaloff>../buttons/skip-next.png</iconset>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="PlayPause">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>80</y>
-      <width>81</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Play/Pause</string>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>../buttons/play.png</normaloff>../buttons/play.png</iconset>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="AddFolder">
-    <property name="geometry">
-     <rect>
-      <x>320</x>
-      <y>60</y>
-      <width>51</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>folder</string>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>../buttons/plus.png</normaloff>../buttons/plus.png</iconset>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="AddMusic">
-    <property name="geometry">
-     <rect>
-      <x>320</x>
-      <y>80</y>
-      <width>51</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>music</string>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>../buttons/plus.png</normaloff>../buttons/plus.png</iconset>
-    </property>
-   </widget>
-   <widget class="QSlider" name="Slider">
-    <property name="geometry">
-     <rect>
-      <x>60</x>
-      <y>30</y>
-      <width>261</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
-   </widget>
-   <widget class="QLabel" name="SongName">
-    <property name="geometry">
-     <rect>
-      <x>60</x>
-      <y>10</y>
-      <width>261</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>song_name</string>
-    </property>
-   </widget>
-   <widget class="QTimeEdit" name="CurTime">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>30</y>
-      <width>51</width>
-      <height>22</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QTimeEdit" name="Duraction">
-    <property name="geometry">
-     <rect>
-      <x>320</x>
-      <y>30</y>
-      <width>51</width>
-      <height>22</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>371</width>
-      <height>281</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 178, 102, 255), stop:0.55 rgba(235, 148, 61, 255), stop:0.98 rgba(0, 0, 0, 255), stop:1 rgba(0, 0, 0, 0));</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <zorder>label</zorder>
-   <zorder>ViewPlaylists</zorder>
-   <zorder>ViewSongs</zorder>
-   <zorder>AddPlaylist</zorder>
-   <zorder>SortBy</zorder>
-   <zorder>Shuffle</zorder>
-   <zorder>PreviousSong</zorder>
-   <zorder>NextSong</zorder>
-   <zorder>PlayPause</zorder>
-   <zorder>AddFolder</zorder>
-   <zorder>AddMusic</zorder>
-   <zorder>Slider</zorder>
-   <zorder>SongName</zorder>
-   <zorder>CurTime</zorder>
-   <zorder>Duraction</zorder>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="7" column="3">
+     <layout class="QHBoxLayout" name="horizontalLayout_6">
+      <item>
+       <widget class="QToolButton" name="btn_addp">
+        <property name="text">
+         <string>addp</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="btn_sort">
+        <property name="text">
+         <string>sortby</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="8" column="3">
+     <widget class="QTableView" name="tableView">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Maximum" vsizetype="Minimum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>100</width>
+        <height>16777215</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="4" rowspan="2" colspan="14">
+     <widget class="QTableView" name="playlistView">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>255</horstretch>
+        <verstretch>255</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="sizeIncrement">
+       <size>
+        <width>255</width>
+        <height>304</height>
+       </size>
+      </property>
+      <attribute name="verticalHeaderDefaultSectionSize">
+       <number>20</number>
+      </attribute>
+     </widget>
+    </item>
+    <item row="0" column="3">
+     <spacer name="horizontalSpacer_3">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="2" column="3" colspan="15">
+     <widget class="QSlider" name="sldr_track">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="3" colspan="15">
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QToolButton" name="btn_shuffle">
+        <property name="text">
+         <string>sh</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="btn_previous">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="btn_stop">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="btn_play">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 255, 73);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="btn_pause">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="btn_next">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+    <item row="5" column="17">
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="1">
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QToolButton" name="btn_addf">
+          <property name="text">
+           <string>af</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="btn_add">
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="0" column="0">
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QSlider" name="sldr_vol">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLCDNumber" name="num_vol"/>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="17">
+     <layout class="QHBoxLayout" name="horizontalLayout_7">
+      <item>
+       <spacer name="horizontalSpacer_4">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QToolButton" name="btn_minimize">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="btn_maximize">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="btn_close">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="4" colspan="4">
+     <widget class="QLabel" name="label">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="3" colspan="15">
+     <widget class="QLabel" name="currentTrack">
+      <property name="text">
+       <string>current track</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>sldr_vol</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>num_vol</receiver>
+   <slot>display(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>369</x>
+     <y>68</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>367</x>
+     <y>87</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
