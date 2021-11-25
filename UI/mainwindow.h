@@ -44,6 +44,14 @@ private slots:
     void on_btn_add_clicked(); // Слот для обработки добавления треков через диалоговое окно
 //    void abc();
 
+    void on_btn_play_clicked();
+
+    void on_btn_shuffle_clicked();
+
+    void on_sldr_vol_valueChanged(int value);
+
+    void on_sldr_track_valueChanged(int value);
+
 private:
     Ui::MainWindow *ui;
     QStandardItemModel  *m_playListModel;   // Модель данных плейлиста для отображения
