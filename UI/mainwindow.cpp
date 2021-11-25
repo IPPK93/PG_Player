@@ -40,15 +40,24 @@ m_leftMouseButtonPressed(None)
     ui->btn_previous->setStyleSheet(StyleHelper::getPreviousStyleSheet());
     ui->btn_stop->setStyleSheet(StyleHelper::getStopStyleSheet());
     ui->btn_play->setStyleSheet(StyleHelper::getPlayStyleSheet());
-    ui->btn_pause->setStyleSheet(StyleHelper::getPauseStyleSheet());
+ //   ui->btn_pause->setStyleSheet(StyleHelper::getPauseStyleSheet());
     ui->btn_add->setStyleSheet(StyleHelper::getMenuStyleSheet());
+    ui->btn_addf->setStyleSheet(StyleHelper::getMenuStyleSheet());
+    ui->btn_sort->setStyleSheet(StyleHelper::getSortStyleSheet());
+    ui->btn_shuffle->setStyleSheet(StyleHelper::getDirectStyleSheet());
+    ui->btn_addp->setStyleSheet(StyleHelper::getAddpStyleSheet());
+    ui->playlistsView->setStyleSheet(StyleHelper::getTableView1StyleSheet());
     ui->playlistView->setStyleSheet(StyleHelper::getTableViewStyleSheet());
     ui->btn_add->setText(tr("Добавить"));
+    ui->btn_addf->setText(tr("Добавить папку"));
+    ui->btn_sort->setCursor(Qt::PointingHandCursor);
+    ui->btn_shuffle->setCursor(Qt::PointingHandCursor);
+    ui->btn_addp->setCursor(Qt::PointingHandCursor);
     ui->btn_next->setCursor(Qt::PointingHandCursor);
     ui->btn_previous->setCursor(Qt::PointingHandCursor);
     ui->btn_stop->setCursor(Qt::PointingHandCursor);
     ui->btn_play->setCursor(Qt::PointingHandCursor);
-    ui->btn_pause->setCursor(Qt::PointingHandCursor);
+//    ui->btn_pause->setCursor(Qt::PointingHandCursor);
 
     ui->horizontalLayout->setSpacing(6);
     // Настройка таблицы плейлиста
@@ -57,6 +66,8 @@ m_leftMouseButtonPressed(None)
     // Устанавливаем заголовки таблицы
     m_playListModel->setHorizontalHeaderLabels(QStringList()  << tr("Audio Track")
                                                             << tr("File Path"));
+    ui->playlistView->horizontalHeader()->hide();
+    ui->playlistsView->horizontalHeader()->hide();
     ui->playlistView->hideColumn(1);    // Скрываем колонку, в которой хранится путь к файлу
     ui->playlistView->verticalHeader()->setVisible(false);                  // Скрываем нумерацию строк
     ui->playlistView->setSelectionBehavior(QAbstractItemView::SelectRows);  // Включаем выделение строк
@@ -69,15 +80,14 @@ m_leftMouseButtonPressed(None)
     m_playlist = new QMediaPlaylist(m_player);  // Инициализируем плейлист
     m_player->setPlaylist(m_playlist);          // Устанавливаем плейлист в плеер
     m_player->setVolume(70);                    // Устанавливаем громкость воспроизведения треков
-    m_playlist->setPlaybackMode(QMediaPlaylist::Loop);  // Устанавливаем циклический режим проигрывания плейлиста
-
+    m_playlist->setPlaybackMode(QMediaPlaylist::Sequential);  // Устанавливаем циклический режим проигрывания плейлиста
     // подключаем кнопки управления к слотам управления
     // Здесь отметим, что навигация по плейлисту осуществляется именно через плейлист
     // а запуск/пауза/остановка через сам плеер
     connect(ui->btn_previous, &QToolButton::clicked, m_playlist, &QMediaPlaylist::previous);
     connect(ui->btn_next, &QToolButton::clicked, m_playlist, &QMediaPlaylist::next);
     connect(ui->btn_play, &QToolButton::clicked, m_player, &QMediaPlayer::play);
-    connect(ui->btn_pause, &QToolButton::clicked, m_player, &QMediaPlayer::pause);
+//    connect(ui->btn_play, &QToolButton::clicked, m_player, &QMediaPlayer::pause);
     connect(ui->btn_stop, &QToolButton::clicked, m_player, &QMediaPlayer::stop);
 
     /// коннекты для кнопок сворачивания/максимизации/минимизации/закрытия
@@ -265,3 +275,60 @@ MainWindow::MouseType MainWindow::checkResizableField(QMouseEvent *event)
 
 
 
+bool c = false;
+void MainWindow::on_btn_play_clicked()
+{
+    if(c == false)
+    {
+        c = true;
+        ui->btn_play->setStyleSheet(StyleHelper::getPauseStyleSheet());
+        connect(ui->btn_play, &QToolButton::clicked, m_player, &QMediaPlayer::pause);
+    }
+    else
+    {
+        c = false;
+        ui->btn_play->setStyleSheet(StyleHelper::getPlayStyleSheet());
+        connect(ui->btn_play, &QToolButton::clicked, m_player, &QMediaPlayer::play);
+    }
+}
+
+int c1 = 0;
+void MainWindow::on_btn_shuffle_clicked()
+{
+    switch (c1)
+    {
+    case 0:
+        c1++;
+        ui->btn_shuffle->setStyleSheet(StyleHelper::getShuffleStyleSheet());
+        m_playlist->setPlaybackMode(QMediaPlaylist::Random);
+        break;
+    case 1:
+        c1++;
+        ui->btn_shuffle->setStyleSheet(StyleHelper::getRepeatStyleSheet());
+        m_playlist->setPlaybackMode(QMediaPlaylist::Loop);
+        break;
+    case 2:
+        c1++;
+        ui->btn_shuffle->setStyleSheet(StyleHelper::getRepeatOneStyleSheet());
+        m_playlist->setPlaybackMode(QMediaPlaylist::CurrentItemInLoop);
+        break;
+    case 3:
+        c1 = 0;
+        ui->btn_shuffle->setStyleSheet(StyleHelper::getDirectStyleSheet());
+        m_playlist->setPlaybackMode(QMediaPlaylist::Sequential);
+        break;
+    }
+
+}
+
+void MainWindow::on_sldr_vol_valueChanged(int value)
+{
+    m_player->setVolume(value);
+}
+
+
+void MainWindow::on_sldr_track_valueChanged(int value)
+{
+//    m_player->setNotifyInterval(10);
+//    m_player->setPosition(value);
+}
