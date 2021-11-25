@@ -147,7 +147,7 @@ QString StyleHelper::getPlayStyleSheet()
 {
     return "QToolButton { "
            "image: url(:/play.png);"
-           "icon-size: 48px;"
+           "icon-size: 24px;"
            "padding: 6px;"
            "margin: 6px;"
            "border: none;"
@@ -168,6 +168,89 @@ QString StyleHelper::getPauseStyleSheet()
            "}"
            "QToolButton:pressed { "
            "image: url(:/pause-orange.png)"
+           "}";
+}
+
+QString StyleHelper::getShuffleStyleSheet()
+{
+    return "QToolButton { "
+           "image: url(:/shuffle.png);"
+           "icon-size: 24px;"
+           "padding: 6px;"
+           "margin: 6px;"
+           "border: none;"
+           "}"
+           "QToolButton:pressed { "
+           "image: url(:/shuffle-orange.png)"
+           "}";
+}
+
+QString StyleHelper::getSortStyleSheet()
+{
+    return "QToolButton { "
+           "image: url(:/sort.png);"
+           "icon-size: 24px;"
+           "padding: 6px;"
+           "margin: 6px;"
+           "border: none;"
+           "}"
+           "QToolButton:pressed { "
+           "image: url(:/sort-orange.png)"
+           "}";
+}
+
+QString StyleHelper::getDirectStyleSheet()
+{
+    return "QToolButton { "
+           "image: url(:/direct-play.png);"
+           "icon-size: 24px;"
+           "padding: 6px;"
+           "margin: 6px;"
+           "border: none;"
+           "}"
+           "QToolButton:pressed { "
+           "image: url(:/direct-play-orange.png)"
+           "}";
+}
+
+QString StyleHelper::getRepeatStyleSheet()
+{
+    return "QToolButton { "
+           "image: url(:/repeat.png);"
+           "icon-size: 24px;"
+           "padding: 6px;"
+           "margin: 6px;"
+           "border: none;"
+           "}"
+           "QToolButton:pressed { "
+           "image: url(:/repeat-orange.png)"
+           "}";
+}
+
+QString StyleHelper::getRepeatOneStyleSheet()
+{
+    return "QToolButton { "
+           "image: url(:/repeat-current.png);"
+           "icon-size: 24px;"
+           "padding: 6px;"
+           "margin: 6px;"
+           "border: none;"
+           "}"
+           "QToolButton:pressed { "
+           "image: url(:/repeat-current-orange.png)"
+           "}";
+}
+QString StyleHelper::getAddpStyleSheet()
+{
+    return "QToolButton { "
+           "image: url(:/plus.png);"
+           "icon-size: 24px;"
+           "padding: 6px;"
+           "margin: 6px;"
+           "border: none;"
+           "}"
+           "QToolButton:pressed { "
+           "image: url(:/plus-orange.png)"
            "}";
 }
 
@@ -193,6 +276,25 @@ QString StyleHelper::getMenuStyleSheet()
 }
 
 QString StyleHelper::getTableViewStyleSheet()
+{
+    return "QTableView { "
+           "background-color: white; "
+           "color: black; "
+           "border: 1px solid #e2e2de;"
+           "}"
+           "QTableView::item:selected {"
+           "background-color: #de8e37;"
+           "}"
+           "QHeaderView::section:horizintal {"
+           "background-color: white;"
+           "border-style: none;"
+           "color: black; "
+           "border: 1px solid #e2e2de; "
+           "padding: 6px; "
+           "}";
+}
+
+QString StyleHelper::getTableView1StyleSheet()
 {
     return "QTableView { "
            "background-color: white; "
