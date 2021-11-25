@@ -86,8 +86,6 @@ m_leftMouseButtonPressed(None)
     // а запуск/пауза/остановка через сам плеер
     connect(ui->btn_previous, &QToolButton::clicked, m_playlist, &QMediaPlaylist::previous);
     connect(ui->btn_next, &QToolButton::clicked, m_playlist, &QMediaPlaylist::next);
-    connect(ui->btn_play, &QToolButton::clicked, m_player, &QMediaPlayer::play);
-//    connect(ui->btn_play, &QToolButton::clicked, m_player, &QMediaPlayer::pause);
     connect(ui->btn_stop, &QToolButton::clicked, m_player, &QMediaPlayer::stop);
 
     /// коннекты для кнопок сворачивания/максимизации/минимизации/закрытия
@@ -281,14 +279,14 @@ void MainWindow::on_btn_play_clicked()
     if(c == false)
     {
         c = true;
+        m_player->play();
         ui->btn_play->setStyleSheet(StyleHelper::getPauseStyleSheet());
-        connect(ui->btn_play, &QToolButton::clicked, m_player, &QMediaPlayer::pause);
     }
     else
     {
         c = false;
+        m_player->pause();
         ui->btn_play->setStyleSheet(StyleHelper::getPlayStyleSheet());
-        connect(ui->btn_play, &QToolButton::clicked, m_player, &QMediaPlayer::play);
     }
 }
 
