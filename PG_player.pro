@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -16,25 +16,25 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    Core/core.cpp \
     Core/filesystem_handler.cpp \
-    Core/playlist.cpp \
     Core/playlists_manager.cpp \
     Core/timer.cpp \
     Core/track_controller.cpp \
     main.cpp \
     UI/mainwindow.cpp \
-    UI/stylehelper.cpp
+    UI/stylehelper.cpp \
+    player.cpp
 
 HEADERS += \
     Core/core.h \
     Core/filesystem_handler.h \
     UI/mainwindow.h \
     UI/stylehelper.h\
-    Core/music.h \
-    Core/playlist.h \
     Core/playlists_manager.h \
     Core/timer.h \
-    Core/track_controller.h
+    Core/track_controller.h \
+    player.h
 
 FORMS += \
     UI/mainwindow.ui
@@ -46,37 +46,3 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     buttons/source.qrc \
-
-DISTFILES += \
-    buttons/130898.png \
-    buttons/5ee00035459021.42522331.jpg \
-    buttons/9dksh8DIjLA.jpg \
-    buttons/X0Yb8fKRnDA.jpg \
-    buttons/close-gray.png \
-    buttons/close-orange.png \
-    buttons/close.png \
-    buttons/pause (2).png \
-    buttons/pause-orange.png \
-    buttons/pause.png \
-    buttons/play (2).png \
-    buttons/play-orange.png \
-    buttons/play.png \
-    buttons/plus (2).png \
-    buttons/plus-orange.png \
-    buttons/plus.png \
-    buttons/shuffle.png \
-    buttons/skip-next (2).png \
-    buttons/skip-next-orange.png \
-    buttons/skip-next.png \
-    buttons/skip-previous (2).png \
-    buttons/skip-previous-orange.png \
-    buttons/skip-previous.png \
-    buttons/stop (2).png \
-    buttons/stop-orange.png \
-    buttons/stop.png \
-    buttons/window-maximize-gray.png \
-    buttons/window-maximize.png \
-    buttons/window-minimize-gray.png \
-    buttons/window-minimize.png \
-    buttons/window-restore-gray.png \
-    buttons/window-restore.png
