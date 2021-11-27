@@ -6,6 +6,9 @@
 #include <QtMultimedia/QMediaPlayer>
 #include <QtMultimedia/QMediaPlaylist>
 #include <QMouseEvent>
+#include <QtWidgets/QToolButton>
+#include <QTableView>
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -28,6 +31,22 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     QPoint previousPosition() const;
+
+    const QToolButton* get_add_file_button();
+    const QToolButton* get_add_folder_button();
+    const QToolButton* get_prev_button();
+    const QToolButton* get_next_button();
+    const QToolButton* get_play_button();
+    const QToolButton* get_pause_button();
+    const QToolButton* get_stop_button();
+
+
+    QString get_folder();
+    QString get_file();
+
+    QTableView* get_playlist_view();
+    QTableView* get_playlists_view();
+
     
 public slots:
     void setPreviousPosition(QPoint previousPosition);  
@@ -40,18 +59,15 @@ protected:
     void mouseReleaseEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
 
-private slots:
-    void on_btn_add_clicked(); // Слот для обработки добавления треков через диалоговое окно
-//    void abc();
-
 private:
     Ui::MainWindow *ui;
-    QStandardItemModel  *m_playListModel;   // Модель данных плейлиста для отображения
-    QMediaPlayer        *m_player;          // Проигрыватель треков
-    QMediaPlaylist      *m_playlist;        // Плейлиста проигрывателя
+//    QStandardItemModel  *m_playListModel;   // Модель данных плейлиста для отображения
+//    QMediaPlayer        *m_player;          // Проигрыватель треков
+//    QMediaPlaylist      *m_playlist;        // Плейлиста проигрывателя
     MouseType m_leftMouseButtonPressed;
     QPoint m_previousPosition;
 
     MouseType checkResizableField(QMouseEvent *event);
+
 };
 #endif // MAINWINDOW_H
