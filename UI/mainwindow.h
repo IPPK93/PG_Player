@@ -37,8 +37,10 @@ public:
     const QToolButton* get_prev_button();
     const QToolButton* get_next_button();
     const QToolButton* get_play_button();
-    const QToolButton* get_pause_button();
     const QToolButton* get_stop_button();
+    const QToolButton* get_shuffle_button();
+    const QSlider* get_slider_vol();
+    const QSlider* get_slider_track();
 
 
     QString get_folder();
@@ -49,7 +51,13 @@ public:
 
     
 public slots:
-    void setPreviousPosition(QPoint previousPosition);  
+    void setPreviousPosition(QPoint previousPosition);
+    void set_play_button();
+    void set_pause_button();
+    void set_shuffle_button();
+    void set_repeat_button();
+    void set_repeat_one_button();
+    void set_direct_play_button();
     
 signals:
     void previousPositionChanged(QPoint previousPosition);
