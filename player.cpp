@@ -42,6 +42,11 @@ Player::Player(QObject* parent)
         //core->track_controller->setVolume(value);
     });        
     
+    connect(core->track_controller, &QMediaPlayer::durationChanged, ui->get_slider_track(), &QSlider::setMaximum);
+    connect(core->track_controller, &QMediaPlayer::positionChanged, ui->get_slider_track(), &QSlider::setValue);
+    connect(ui->get_slider_track(), &QSlider::sliderMoved, core->track_controller, &QMediaPlayer::setPosition);
+        
+        
     connect(ui->get_prev_button(), &QToolButton::clicked, core->cur_playlist(), &QMediaPlaylist::previous);
     connect(ui->get_next_button(), &QToolButton::clicked, core->cur_playlist(), &QMediaPlaylist::next);
     //connect(ui->get_play_button(), &QToolButton::clicked, core->track_controller, &QMediaPlayer::play);
