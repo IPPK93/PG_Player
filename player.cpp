@@ -36,11 +36,11 @@ Player::Player(QObject* parent)
         core->track_controller->setVolume(value);
     });
 
-    connect(ui->get_slider_track(), &QSlider::sliderMoved, [this](int value)
-    {
-        on_sldr_track_valueChanged(value);
-        //core->track_controller->setVolume(value);
-    });        
+//     connect(ui->get_slider_track(), &QSlider::sliderMoved, [this](int value)
+//     {
+//         on_sldr_track_valueChanged(value);
+//         //core->track_controller->setVolume(value);
+//     });        
     
     connect(core->track_controller, &QMediaPlayer::durationChanged, ui->get_slider_track(), &QSlider::setMaximum);
     connect(core->track_controller, &QMediaPlayer::positionChanged, ui->get_slider_track(), &QSlider::setValue);
@@ -112,11 +112,11 @@ void Player::shuffle_button()
 //    //m_player->setVolume(value)
 //}
 
-void Player::on_sldr_track_valueChanged(int value)
-{
-    core->track_controller->setNotifyInterval(10);
-    core->track_controller->setPosition(value);
-}
+// void Player::on_sldr_track_valueChanged(int value)
+// {
+//     core->track_controller->setNotifyInterval(10);
+//     core->track_controller->setPosition(value);
+// }
 
 void Player::handle_folder()
 {
