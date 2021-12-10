@@ -9,7 +9,7 @@ Core::Core(QObject* parent)
     track_controller->setMedia(playlists_manager->cur_playlist);
     track_controller->setPlaylist(cur_playlist());          // Устанавливаем плейлист в плеер
     track_controller->setVolume(70);                    // Устанавливаем громкость воспроизведения треков
-    cur_playlist()->setPlaybackMode(QMediaPlaylist::Loop);  // Устанавливаем циклический режим проигрывания плейлиста
+    cur_playlist()->setPlaybackMode(QMediaPlaylist::Sequential);  // Устанавливаем прямой режим проигрывания плейлиста
 }
 
 void Core::initialize_playlist(QString folder_path)
