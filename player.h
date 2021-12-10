@@ -21,8 +21,12 @@ public:
 
 
 public slots:
+    void play_button();
+    void shuffle_button();
     void handle_folder();
     void handle_file();
+   // void on_sldr_vol_valueChanged(int value);
+    void on_sldr_track_valueChanged(int value);
 };
 
 #endif // PLAYER_H
