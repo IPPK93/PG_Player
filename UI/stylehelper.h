@@ -19,6 +19,13 @@ public:
     static QString getPauseStyleSheet();
     static QString getMenuStyleSheet();
     static QString getTableViewStyleSheet();
+    static QString getShuffleStyleSheet();
+    static QString getDirectStyleSheet();
+    static QString getRepeatStyleSheet();
+    static QString getRepeatOneStyleSheet();
+    static QString getSortStyleSheet();
+    static QString getTableView1StyleSheet();
+    static QString getAddpStyleSheet();
 };
 
 #endif // STYLEHELPER_H
