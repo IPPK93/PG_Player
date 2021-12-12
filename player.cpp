@@ -20,7 +20,7 @@ Player::Player(QObject* parent)
     {
         handle_folder();
     });
-        
+
     connect(ui->get_play_button(), &QToolButton::clicked, [this]()
     {
         play_button();
@@ -36,27 +36,21 @@ Player::Player(QObject* parent)
         core->track_controller->setVolume(value);
     });
 
-//     connect(ui->get_slider_track(), &QSlider::sliderMoved, [this](int value)
-//     {
-//         on_sldr_track_valueChanged(value);
-//         //core->track_controller->setVolume(value);
-//     });        
-    
     connect(core->track_controller, &QMediaPlayer::durationChanged, ui->get_slider_track(), &QSlider::setMaximum);
     connect(core->track_controller, &QMediaPlayer::positionChanged, ui->get_slider_track(), &QSlider::setValue);
     connect(ui->get_slider_track(), &QSlider::sliderMoved, core->track_controller, &QMediaPlayer::setPosition);
-        
-        
+
     connect(ui->get_prev_button(), &QToolButton::clicked, core->cur_playlist(), &QMediaPlaylist::previous);
     connect(ui->get_next_button(), &QToolButton::clicked, core->cur_playlist(), &QMediaPlaylist::next);
-    //connect(ui->get_play_button(), &QToolButton::clicked, core->track_controller, &QMediaPlayer::play);
-   // connect(ui->get_pause_button(), &QToolButton::clicked, core->track_controller, &QMediaPlayer::pause);
     connect(ui->get_stop_button(), &QToolButton::clicked, core->track_controller, &QMediaPlayer::stop);
-        
+
     connect(ui->get_playlist_view(), &QTableView::doubleClicked, [this](const QModelIndex &index){
         core->cur_playlist()->setCurrentIndex(index.row());
     });
 
+    connect(core->playlists_manager->cur_playlist, &QMediaPlaylist::currentIndexChanged, [this](int index){
+        ui->get_current_track()->setText(core->cur_playlist_model()->item(index)->text());
+    });
 
     ui->show();
 }
@@ -84,39 +78,25 @@ void Player::shuffle_button()
         case 0:
             shuffle_clicked++;
             ui->set_shuffle_button();
-            core->playlists_manager->cur_playlist->setPlaybackMode(QMediaPlaylist::Random);
+            core->cur_playlist()->setPlaybackMode(QMediaPlaylist::Random);
             break;
         case 1:
             shuffle_clicked++;
             ui->set_repeat_button();
-            core->playlists_manager->cur_playlist->setPlaybackMode(QMediaPlaylist::Loop);
-           // m_playlist->setPlaybackMode(QMediaPlaylist::Loop);
+            core->cur_playlist()->setPlaybackMode(QMediaPlaylist::Loop);
             break;
         case 2:
             shuffle_clicked++;
             ui->set_repeat_one_button();
-            core->playlists_manager->cur_playlist->setPlaybackMode(QMediaPlaylist::CurrentItemInLoop);
-           // m_playlist->setPlaybackMode(QMediaPlaylist::CurrentItemInLoop);
+            core->cur_playlist()->setPlaybackMode(QMediaPlaylist::CurrentItemInLoop);
             break;
         case 3:
             shuffle_clicked = 0;
             ui->set_direct_play_button();
-            core->playlists_manager->cur_playlist->setPlaybackMode(QMediaPlaylist::Sequential);
-          //  m_playlist->setPlaybackMode(QMediaPlaylist::Sequential);
+            core->cur_playlist()->setPlaybackMode(QMediaPlaylist::Sequential);
             break;
         }
 }
-
-//void Player::on_sldr_vol_valueChanged(int value)
-//{
-//    //m_player->setVolume(value)
-//}
-
-// void Player::on_sldr_track_valueChanged(int value)
-// {
-//     core->track_controller->setNotifyInterval(10);
-//     core->track_controller->setPosition(value);
-// }
 
 void Player::handle_folder()
 {
@@ -132,7 +112,6 @@ void Player::handle_file()
     if (file_path != "")
         core->initialize_music(file_path);
 }
-
 
 // SHOULD BE IN CONSTRUCTOR. NEED TO REALISE TRACKCONTROLLER TO MAKE THIS WORK
 //    connect(core->playlists_manager->, &QMediaPlaylist::currentIndexChanged, [this](int index){
