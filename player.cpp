@@ -2,7 +2,6 @@
 #include <QObject>
 #include <QtWidgets/QToolButton>
 #include <QDebug>
-
 Player::Player(QObject* parent)
     : QObject(parent)
 {
@@ -29,6 +28,11 @@ Player::Player(QObject* parent)
     connect(ui->get_shuffle_button(), &QToolButton::clicked, [this]()
     {
         shuffle_button();
+    });
+
+    connect(ui->get_sort_button(), &QToolButton::clicked, [this]()
+    {
+        sort_button();
     });
 
     connect(ui->get_slider_vol(), &QSlider::valueChanged, [this](int value)
@@ -96,6 +100,20 @@ void Player::shuffle_button()
             core->cur_playlist()->setPlaybackMode(QMediaPlaylist::Sequential);
             break;
         }
+}
+
+void Player::sort_button()
+{
+    if (sort_clicked == 0)
+    {
+        ui->get_playlists_view()->sortByColumn(0,Qt::AscendingOrder);
+        sort_clicked = 1;
+    }
+    else
+    {
+        ui->get_playlists_view()->sortByColumn(0,Qt::DescendingOrder);
+        sort_clicked = 0;
+    }
 }
 
 void Player::handle_folder()
