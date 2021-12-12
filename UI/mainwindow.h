@@ -34,13 +34,17 @@ public:
 
        const QToolButton* get_add_file_button();
        const QToolButton* get_add_folder_button();
+       const QToolButton* get_add_playlist_button();
        const QToolButton* get_prev_button();
        const QToolButton* get_next_button();
        const QToolButton* get_play_button();
        const QToolButton* get_stop_button();
        const QToolButton* get_shuffle_button();
+       const QToolButton* get_sort_button();
+
        const QSlider* get_slider_vol();
        const QSlider* get_slider_track();
+
        QLabel* get_current_track();
        QString get_folder();
        QString get_file();
