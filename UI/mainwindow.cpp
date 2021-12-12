@@ -273,15 +273,21 @@ const QToolButton* MainWindow::get_add_file_button()
     return ui->btn_add_file;
 }
 
+const QToolButton* MainWindow::get_add_folder_button()
+{
+    return ui->btn_add_folder;
+}
+
+const QToolButton* MainWindow::get_add_playlist_button()
+{
+    return ui->btn_addp;
+}
+
 QLabel* MainWindow::get_current_track()
 {
     return ui->currentTrack;
 }
 
-const QToolButton* MainWindow::get_add_folder_button()
-{
-    return ui->btn_add_folder;
-}
 const QToolButton* MainWindow::get_prev_button()
 {
     return ui->btn_previous;
@@ -317,6 +323,10 @@ const QToolButton* MainWindow::get_stop_button()
     return ui->btn_stop;
 }
 
+const QToolButton* MainWindow::get_sort_button()
+{
+    return ui->btn_sort;
+}
 
 QTableView* MainWindow::get_playlist_view()
 {
@@ -327,3 +337,4 @@ QTableView* MainWindow::get_playlists_view()
 {
     return ui->playlists_view;
 }
+
