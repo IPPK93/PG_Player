@@ -24,8 +24,10 @@ public slots:
     void shuffle_button();
     void handle_folder();
     void handle_file();
+    void sort_button();
 
 private:
+    bool sort_clicked = false;
     bool play_clicked = false;
     int shuffle_clicked = 0;
 };
