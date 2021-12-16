@@ -6,7 +6,7 @@ Core::Core(QObject* parent)
 {
     playlists_manager = new PlaylistsManager;
     track_controller = new TrackController;
-    track_controller->setMedia(playlists_manager->cur_playlist);
+//    track_controller->setMedia(playlists_manager->cur_playlist);
     track_controller->setPlaylist(cur_playlist());          // Устанавливаем плейлист в плеер
     track_controller->setVolume(70);                    // Устанавливаем громкость воспроизведения треков
     cur_playlist()->setPlaybackMode(QMediaPlaylist::Sequential);  // Устанавливаем прямой режим проигрывания плейлиста

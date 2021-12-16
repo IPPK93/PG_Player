@@ -48,12 +48,27 @@ Player::Player(QObject* parent)
     connect(ui->get_next_button(), &QToolButton::clicked, core->cur_playlist(), &QMediaPlaylist::next);
     connect(ui->get_stop_button(), &QToolButton::clicked, core->track_controller, &QMediaPlayer::stop);
 
-    connect(ui->get_playlist_view(), &QTableView::doubleClicked, [this](const QModelIndex &index){
+    connect(ui->get_playlist_view(), &QTableView::doubleClicked, [this](const QModelIndex &index)
+    {
         core->cur_playlist()->setCurrentIndex(index.row());
+        if(!play_clicked)
+        {
+            play_clicked = true;
+            core->track_controller->play();
+            ui->set_pause_button();
+        }
     });
 
-    connect(core->playlists_manager->cur_playlist, &QMediaPlaylist::currentIndexChanged, [this](int index){
+    connect(core->playlists_manager->cur_playlist, &QMediaPlaylist::currentIndexChanged, [this](int index)
+    {
         ui->get_current_track()->setText(core->cur_playlist_model()->item(index)->text());
+    });
+
+    connect(ui->get_playlists_view(), &QTableView::doubleClicked, [this](const QModelIndex& index)
+    {
+        core->playlists()->setCurrentIndex(index.row());
+        // core->track_controller->setPlaylist(nullptr);
+//        core->playlists_manager->cur_playlist = new QMediaPlaylist(core->playlists()->currentMedia());
     });
 
     ui->show();
