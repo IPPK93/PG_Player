@@ -87,18 +87,36 @@
       </property>
      </widget>
     </item>
-    <item row="0" column="3">
-     <spacer name="horizontalSpacer_3">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
+    <item row="7" column="3">
+     <layout class="QHBoxLayout" name="horizontalLayout_6">
+      <item>
+       <widget class="QToolButton" name="btn_addp">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="btn_sort">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="4" colspan="4">
+     <widget class="QLabel" name="label">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
       </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
+      <property name="text">
+       <string>TextLabel</string>
       </property>
-     </spacer>
+     </widget>
     </item>
     <item row="7" column="3">
      <layout class="QHBoxLayout" name="horizontalLayout_6">
@@ -191,6 +209,29 @@
        </spacer>
       </item>
      </layout>
+    </item>
+    <item row="8" column="3">
+     <widget class="QTableView" name="playlistsView">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>100</width>
+        <height>16777215</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="3" colspan="15">
+     <widget class="QSlider" name="sldr_track">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
     </item>
     <item row="5" column="17">
      <layout class="QGridLayout" name="gridLayout_2">
@@ -355,12 +396,12 @@ border-left-color: rgb(0, 0, 0);</string>
    <slot>display(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>369</x>
-     <y>68</y>
+     <x>398</x>
+     <y>97</y>
     </hint>
     <hint type="destinationlabel">
-     <x>367</x>
-     <y>87</y>
+     <x>398</x>
+     <y>134</y>
     </hint>
    </hints>
   </connection>

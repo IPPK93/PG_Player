@@ -12,7 +12,6 @@
 #include <QTableView>
 #include <QLabel>
 
-
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -36,27 +35,26 @@ public:
     ~MainWindow();
     QPoint previousPosition() const;
 
-       const QToolButton* get_add_file_button();
-       const QToolButton* get_add_folder_button();
-       const QToolButton* get_add_playlist_button();
-       const QToolButton* get_prev_button();
-       const QToolButton* get_next_button();
-       const QToolButton* get_play_button();
-       const QToolButton* get_stop_button();
-       const QToolButton* get_shuffle_button();
-       const QToolButton* get_sort_button();
-       const QToolButton* get_addp_button();
+    const QToolButton* get_add_file_button();
+    const QToolButton* get_add_folder_button();
+    const QToolButton* get_add_playlist_button();
+    const QToolButton* get_prev_button();
+    const QToolButton* get_next_button();
+    const QToolButton* get_play_button();
+    const QToolButton* get_stop_button();
+    const QToolButton* get_shuffle_button();
+    const QToolButton* get_sort_button();
+    const QToolButton* get_addp_button();
 
+    const QSlider* get_slider_vol();
+    const QSlider* get_slider_track();
 
-       const QSlider* get_slider_vol();
-       const QSlider* get_slider_track();
+    QLabel* get_current_track();
+    QString get_folder();
+    QString get_file();
 
-       QLabel* get_current_track();
-       QString get_folder();
-       QString get_file();
-
-       QTableView* get_playlist_view();
-       QTableView* get_playlists_view();
+    QTableView* get_playlist_view();
+    QTableView* get_playlists_view();
 
 public slots:
     void setPreviousPosition(QPoint previousPosition);
