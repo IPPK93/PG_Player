@@ -13,10 +13,12 @@ Player::Player(QObject* parent)
 
     connect(ui->get_add_file_button(), &QToolButton::clicked, [this]()
     {
+        music_exist = true;
         handle_file();
     });
     connect(ui->get_add_folder_button(), &QToolButton::clicked, [this]()
     {
+        music_exist = true;
         handle_folder();
     });
 
@@ -28,6 +30,11 @@ Player::Player(QObject* parent)
     connect(ui->get_shuffle_button(), &QToolButton::clicked, [this]()
     {
         shuffle_button();
+    });
+        
+    connect(ui->get_addp_button(), &QToolButton::clicked, [this]()
+    {
+        addp_button();
     });
 
     connect(ui->get_sort_button(), &QToolButton::clicked, [this]()
@@ -75,19 +82,39 @@ Player::Player(QObject* parent)
 }
 
 void Player::play_button()
+{ 
+    if(music_exist)
+    {
+        if(play_clicked == false)
+        {
+            play_clicked = true;
+            core->track_controller->play();
+            ui->set_pause_button();
+        }
+        else
+        {
+            play_clicked = false;
+            core->track_controller->pause();
+            ui->set_play_button();
+        }
+    }
+}
+
+void Player::addp_button()
 {
-    if(play_clicked == false)
+    if( ui->get_playlist_view()->selectionMode() == QAbstractItemView::MultiSelection)
     {
-        play_clicked = true;
-        core->track_controller->play();
-        ui->set_pause_button();
+        QModelIndexList selection = ui->get_playlist_view()->selectionModel()->selectedRows();
+        for(int i=0; i< selection.count(); i++)
+        {
+            QModelIndex index = selection.at(i);
+            qDebug() << index.row();
+        }
+        ui->get_playlist_view()->clearSelection();
+        ui->get_playlist_view()->setSelectionMode(QAbstractItemView::SingleSelection);
     }
-    else
-    {
-        play_clicked = false;
-        core->track_controller->pause();
-        ui->set_play_button();
-    }
+    else if( ui->get_playlist_view()->selectionMode() == QAbstractItemView::SingleSelection)
+        ui->get_playlist_view()->setSelectionMode(QAbstractItemView::MultiSelection);
 }
 
 void Player::shuffle_button()
