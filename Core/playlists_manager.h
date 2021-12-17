@@ -1,12 +1,13 @@
 #ifndef PLAYLISTS_MANAGER_H
 #define PLAYLISTS_MANAGER_H
 
-#include <QVector>
-#include <QStandardItemModel>
-#include <QMediaPlaylist>
-#include <QString>
 #include <QObject>
-
+#include <QString>
+#include <QList>
+#include <QMap>
+#include <QMediaPlaylist>
+#include <QModelIndexList>
+#include <QStandardItemModel>
 
 /*!
  * \brief The PlaylistsManager class
@@ -27,10 +28,16 @@ public:
     QStandardItemModel* cur_playlist_model; // Модель данных плейлистов для отображения
 
 
-    void create_playlist(QMediaPlaylist* playlist, QList<QList<QStandardItemModel*>>* playlist_info); //???
+    QMap<QString, QList<QString>> titles;
+
+    void create_playlist(QModelIndexList& indices);
     void delete_playlist(const QString& name);
 
     virtual ~PlaylistsManager() override;
+
+signals:
+    void playlist_created();
+
 };
 
 #endif // PLAYLISTS_MANAGER_H

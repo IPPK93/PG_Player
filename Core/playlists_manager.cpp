@@ -1,21 +1,23 @@
 #include "playlists_manager.h"
+#include <QModelIndex>
+#include <QStandardItem>
 
 PlaylistsManager::PlaylistsManager(QObject* parent)
     : QObject(parent)
 {
-    this->playlists = new QMediaPlaylist;
-    this->playlists_model = new QStandardItemModel(this);
+    playlists = new QMediaPlaylist;
+    playlists_model = new QStandardItemModel(this);
 
-    this->default_playlist = new QMediaPlaylist;
+    playlists->addMedia(new QMediaPlaylist);
+    default_playlist = playlists->media(0).playlist();
 
-    this->playlists->addMedia(default_playlist);
-    this->playlists_model->appendRow(new QStandardItem("Default"));
-    this->playlists_model->setHorizontalHeaderLabels(QStringList()  << tr("Playlist"));
+    playlists_model->appendRow(new QStandardItem("Default"));
+    titles.insert("Default", QList<QString>());
+    playlists_model->setHorizontalHeaderLabels(QStringList()  << tr("Playlist"));
 
-
-    this->cur_playlist = default_playlist;
-    this->cur_playlist_model = new QStandardItemModel(this);
-    this->cur_playlist_model->setHorizontalHeaderLabels(QStringList()  << tr("Audio Track"));
+    cur_playlist = default_playlist;
+    cur_playlist_model = new QStandardItemModel(this);
+    cur_playlist_model->setHorizontalHeaderLabels(QStringList()  << tr("Audio Track"));
 }
 
 /*!
@@ -25,26 +27,27 @@ PlaylistsManager::PlaylistsManager(QObject* parent)
  *
  * \details Create a playlist with a given name from a given music data
  *
- * NOTE: Parameters are still under consideration
  */
-void PlaylistsManager::create_playlist(QMediaPlaylist* playlist, QList<QList<QStandardItemModel*>>* playlist_info)
+void PlaylistsManager::create_playlist(QModelIndexList& indices)
 {
-//    this->playlists->addMedia(playlist);
-//    this->playLists_model->appendRow(playlist_info);
-}
+    QString name = "New Playlist " + QString::number(playlists_model->rowCount());
+    QMediaPlaylist* playlist = new QMediaPlaylist(this);
+    for(QModelIndex index : indices)
+    {
+        titles[name].append(index.data().toString());
+        playlist->addMedia(playlists->media(index.row()));
+    }
 
-/*!
- * \brief PlaylistsManager::delete_playlist
- * \param name
- *
- * \details Delete playlist with a given name
- *
- * NOTE: Parameters are still under consideration
- */
-void PlaylistsManager::delete_playlist(const QString& name)
-{
+    playlists->addMedia(playlist);
+    playlists_model->appendRow(new QStandardItem(name));
 
+    emit playlist_created();
 }
 
 PlaylistsManager::~PlaylistsManager()
-{ }
+{
+    for(int i = 0; i < playlists->mediaCount(); ++i)
+        playlists->removeMedia(i);
+    delete playlists_model;
+    delete cur_playlist_model;
+}
