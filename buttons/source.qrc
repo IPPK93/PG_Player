@@ -7,10 +7,6 @@
         <file>skip-previous.png</file>
         <file>stop.png</file>
         <file>shuffle.png</file>
-        <file>9dksh8DIjLA.jpg</file>
-        <file>X0Yb8fKRnDA.jpg</file>
-        <file>130898.png</file>
-        <file>5ee00035459021.42522331.jpg</file>
         <file>pause-orange.png</file>
         <file>close.png</file>
         <file>close-gray.png</file>
@@ -32,5 +28,15 @@
         <file>window-minimize-gray.png</file>
         <file>window-restore.png</file>
         <file>window-restore-gray.png</file>
+        <file>shuffle-orange.png</file>
+        <file>sort.png</file>
+        <file>sort-orange.png</file>
+        <file>direct-play.png</file>
+        <file>direct-play-orange.png</file>
+        <file>repeat.png</file>
+        <file>repeat-current.png</file>
+        <file>repeat-current-orange.png</file>
+        <file>repeat-orange.png</file>
+        <file>papblack.jpg</file>
     </qresource>
 </RCC>

@@ -1,27 +1,19 @@
 #ifndef TRACK_CONTROLLER_H
 #define TRACK_CONTROLLER_H
 
-#include "music.h"
-#include "timer.h"
+#include <QObject>
+#include <QMediaPlayer>
 
 /*!
  * \brief The TrackController class
  *
  * \details Class that controls tracks' workflow
  */
-class TrackController
+class TrackController : public QMediaPlayer
 {
+    Q_OBJECT
 public:
-    Music* current_music;
-    Timer timer;
-
-    void play();
-    void pause();
-    void switch_music();
-    void rewind();
-private:
-    Music* prev_music;
-    Music* next_music;
+    explicit TrackController(QObject* parent = nullptr);
 };
 
 #endif // TRACK_CONTROLLER_H

@@ -1,20 +1,16 @@
-#ifndef MUSIC_H
-#define MUSIC_H
+//#ifndef MUSIC_H
+//#define MUSIC_H
 
-#include <string>
+//#include <string>
+//#include <QString>
+//#include <QMediaContent>
 
-/*!
- * \brief The Music struct
- *
- * \details class that has all necessary information about music
- */
-struct Music
-{
-private: // temporary. Should be redone using getters/setters and constructor
-    std::string filepath;
-    std::string name;
-    int duration;
-    int bitrate;
-};
+///*!
+// * \brief The Music struct
+// *
+// * \details class that has all necessary information about music
+// */
+//struct Music : public QMediaContent
+//{ };
 
-#endif // MUSIC_H
+//#endif // MUSIC_H

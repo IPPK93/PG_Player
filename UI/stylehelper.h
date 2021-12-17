@@ -26,6 +26,7 @@ public:
     static QString getSortStyleSheet();
     static QString getTableView1StyleSheet();
     static QString getAddpStyleSheet();
+    static QString getSliderStyleSheet();
 };
 
 #endif // STYLEHELPER_H

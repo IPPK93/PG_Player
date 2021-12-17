@@ -289,8 +289,48 @@ QString StyleHelper::getTableViewStyleSheet()
            "background-color: white;"
            "border-style: none;"
            "color: black; "
+           "border: 0px solid #e2e2de; "
+           "padding: 0px; "
+           "}";
+}
+
+QString StyleHelper::getTableView1StyleSheet()
+{
+    return "QTableView { "
+           "background-color: white; "
+           "color: black; "
+           "border: 1px solid #e2e2de;"
+           "}"
+           "QTableView::item:selected {"
+           "background-color: #de8e37;"
+           "}"
+           "QHeaderView::section:horizintal {"
+           "background-color: white;"
+           "border-style: none;"
+           "color: black; "
            "border: 1px solid #e2e2de; "
-           "padding: 6px; "
+           "padding: 0px; "
+           "}";
+}
+
+
+QString StyleHelper::getSliderStyleSheet()
+{
+    return "QSlider::groove:horizontal {"
+           "border: 1px solid black;"
+           "height: 8px;"
+           "background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 white, stop:1 #c4c4c4);"
+           "margin: 2px 0;"
+           "}"
+           "QSlider::handle:horizontal {"
+           "background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 black, stop:1 #8f8f8f);"
+           "border: 1px solid #5c5c5c;"
+           "width: 18px;"
+           "margin: -2px 0;"
+           "border-radius: 3px;"
+           "}"
+           "QSlider::sub-page:vertical {"
+           "    background: pink;"
            "}";
 }
 

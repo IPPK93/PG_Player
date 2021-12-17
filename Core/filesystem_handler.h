@@ -1,20 +1,20 @@
 #ifndef FILESYSTEM_HANDLER_H
 #define FILESYSTEM_HANDLER_H
 
-#include <string>
-#include "music.h"
-#include "playlist.h"
+#include <QString>
+#include <QFileSystemModel>
+#include <QMediaContent>
+#include <QStringList>
 
 /*!
- * \brief The FileSystem Handler class
+ * \brief The FileSystem Handler namespace
  *
- * \details Class that handles work with filesystem (alongside UI-part).
+ * \details Handles work with filesystem (alongside UI-part).
  */
-class FSHandler
+namespace FSHandler
 {
-public:
-    Music* get_music(const std::string& path);
-    Playlist* get_playlist(const std::string& path);
+    QMediaContent get_music(const QString& path);
+    QStringList get_music_filenames(const QString& path);
 };
 
 #endif // FILESYSTEM_HANDLER_H

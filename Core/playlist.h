@@ -1,24 +1,18 @@
-#ifndef PLAYLIST_H
-#define PLAYLIST_H
+//#ifndef PLAYLIST_H
+//#define PLAYLIST_H
 
-#include <vector>
-#include <string>
-#include "music.h"
+////#include "music.h"
+//#include <QMediaPlaylist>
 
-/*!
- * \brief The Playlist class
- *
- * \details Basically named container of Music objects
- */
-class Playlist
-{
-public:
-    std::vector<Music*> data;
-    std::string name;
+///*!
+// * \brief The Playlist class
+// *
+// * \details Basically named container of Music objects
+// */
+//class Playlist : public QMediaPlaylist
+//{
+//public:
 
-    void add_music(Music* music);
-    void delete_music(const std::string& music_name);
-    void swap(Music* first_music, Music* second_music);
-};
+//};
 
-#endif // PLAYLIST_H
+//#endif // PLAYLIST_H

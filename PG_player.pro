@@ -16,25 +16,23 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    Core/core.cpp \
     Core/filesystem_handler.cpp \
-    Core/playlist.cpp \
     Core/playlists_manager.cpp \
-    Core/timer.cpp \
     Core/track_controller.cpp \
     main.cpp \
     UI/mainwindow.cpp \
-    UI/stylehelper.cpp
+    UI/stylehelper.cpp \
+    player.cpp
 
 HEADERS += \
     Core/core.h \
     Core/filesystem_handler.h \
     UI/mainwindow.h \
     UI/stylehelper.h\
-    Core/music.h \
-    Core/playlist.h \
     Core/playlists_manager.h \
-    Core/timer.h \
-    Core/track_controller.h
+    Core/track_controller.h \
+    player.h
 
 FORMS += \
     UI/mainwindow.ui
