@@ -316,88 +316,20 @@ QString StyleHelper::getTableView1StyleSheet()
 
 QString StyleHelper::getSliderStyleSheet()
 {
-
     return "QSlider::groove:horizontal {"
            "border: 1px solid black;"
-            "height: 8px;"
-            "background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 white, stop:1 #c4c4c4);"
-            "margin: 2px 0;"
-            "}"
-
-            "QSlider::handle:horizontal {"
+           "height: 8px;"
+           "background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 white, stop:1 #c4c4c4);"
+           "margin: 2px 0;"
+           "}"
+           "QSlider::handle:horizontal {"
            "background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 black, stop:1 #8f8f8f);"
-            "border: 1px solid #5c5c5c;"
-            "width: 18px;"
-            "margin: -2px 0;"
-            "border-radius: 3px;"
-            "}"
-//            "QSlider::groove:vertical {"
-//                "background: red;"
-//                "position: absolute;"
-//                "left: 4px; right: 4px;"
-//            "}"
-
-//            "QSlider::handle:vertical {"
-//                "height: 10px;"
-//                "background: green;"
-//                "margin: 0 -4px;"
-//            "}"
-
-//            "QSlider::add-page:vertical {"
-//                "background: white;"
-//            "}"
-
-            "QSlider::sub-page:vertical {"
-            "    background: pink;"
-    "}";
-    //    return "QSlider::groove:horizontal { "
-    //           "background:#000; "
-    //           "padding-top:-20px; "
-    //           "padding-bottom:-20px;"
-    //            "height:1px;"
-    //           "}"
-    //     return "QSlider::handle:horizontal {"
-    //            "background:url(:/plus.png);"
-    //            "height:49px;"
-    //            "width: 41px;"
-    //            "margin: -3px 0;"
-    //           "}"
-    //           "QSlider::add-page:horizontal {"
-    //           "background: #000;"
-    //            "}";
+           "border: 1px solid #5c5c5c;"
+           "width: 18px;"
+           "margin: -2px 0;"
+           "border-radius: 3px;"
+           "}"
+           "QSlider::sub-page:vertical {"
+           "    background: pink;"
+           "}";
 }
-
-//#slider::groove:horizontal {
-//     background:#000;
-//     padding-top:-20px;
-//     padding-bottom:-20px;
-//     height:45px;
-// }
-
-//#slider::handle:horizontal {
-//     background:url(:/img/ball1.png);
-//     height:49px;
-//     width: 41px;
-//     margin: -3px 0;
-// }
-
-//#slider::add-page:horizontal {
-//    background: #000;
-// }
-
-//#howFar::groove:horizontal {
-
-//     padding-top:-20px;
-//     padding-bottom:-20px;
-//     height:2px;
-// }
-
-//#howFar::handle:horizontal {
-//     background:url(:/img/handle.png);
-//     background-repeat:no-repeat;
-// }
-
-//#howFar::add-page:horizontal {
-//    background: #000;
-//    height:2px;
-// }

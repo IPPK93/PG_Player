@@ -2,13 +2,17 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QStandardItemModel>
-#include <QtMultimedia/QMediaPlayer>
-#include <QtMultimedia/QMediaPlaylist>
+#include <QWidget>
+#include <QPoint>
+#include <QSlider>
+#include <QString>
 #include <QMouseEvent>
-#include <QtWidgets/QToolButton>
-#include <QtWidgets/QLabel>
+#include <QStandardItemModel>
+#include <QToolButton>
 #include <QTableView>
+#include <QLabel>
+
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -42,6 +46,7 @@ public:
        const QToolButton* get_shuffle_button();
        const QToolButton* get_sort_button();
        const QToolButton* get_addp_button();
+
 
        const QSlider* get_slider_vol();
        const QSlider* get_slider_track();

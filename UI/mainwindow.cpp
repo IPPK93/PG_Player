@@ -1,31 +1,32 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "stylehelper.h"
+#include <QStandardPaths>
 #include <QFileDialog>
 #include <QDir>
 #include <QGraphicsDropShadowEffect>
-#include "stylehelper.h"
-#include "Core/core.h"
-#include <QStandardPaths>
-MainWindow::MainWindow(QWidget *parent)
-: QMainWindow(parent)
-, ui(new Ui::MainWindow),
+#include <QAbstractItemView>
+#include <QCursor>
+
+MainWindow::MainWindow(QWidget* parent)
+: QMainWindow(parent),
+ui(new Ui::MainWindow),
 m_leftMouseButtonPressed(None)
 {
     ui->setupUi(this);
-    /// Настройка UI
+    // Настройка UI
     this->setWindowFlags(Qt::FramelessWindowHint);      // Отключаем оформление окна
     this->setAttribute(Qt::WA_TranslucentBackground);   // Делаем фон главного виджета прозрачным
     this->setStyleSheet(StyleHelper::getWindowStyleSheet());    // Устанавливаем стиль виджета
     this->setMouseTracking(true);   // Включаем отслеживание курсора без нажатых кнопокы
 
     // Создаём эффект тени
-    QGraphicsDropShadowEffect *shadowEffect = new QGraphicsDropShadowEffect(this);
+    QGraphicsDropShadowEffect* shadowEffect = new QGraphicsDropShadowEffect(this);
     shadowEffect->setBlurRadius(9); // Устанавливаем радиус размытия
     shadowEffect->setOffset(0);     // Устанавливаем смещение тени
     ui->centralwidget->setGraphicsEffect(shadowEffect);   // Устанавливаем эффект тени на окно
     ui->centralwidget->layout()->setMargin(0);            // Устанавливаем размер полей
     ui->centralwidget->layout()->setSpacing(0);
-   // ui->label->setText("AIMP Fake Player");
     ui->label->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 
     // Установка стилей для всех элементов
@@ -57,30 +58,26 @@ m_leftMouseButtonPressed(None)
     ui->btn_stop->setCursor(Qt::PointingHandCursor);
     ui->btn_play->setCursor(Qt::PointingHandCursor);
 
-    // NEED TO TAKE FROM HERE
 
     ui->horizontalLayout->setSpacing(6);
-        ui->playlist_view->horizontalHeader()->hide();
-        ui->playlist_view->verticalHeader()->setVisible(false);                  // Скрываем нумерацию строк
-        ui->playlist_view->setSelectionBehavior(QAbstractItemView::SelectRows);  // Включаем выделение строк
-        ui->playlist_view->setSelectionMode(QAbstractItemView::SingleSelection); // Разрешаем выделять только одну строку
-        ui->playlist_view->setEditTriggers(QAbstractItemView::NoEditTriggers);   // Отключаем редактирование
-        // Включаем подгонку размера последней видимой колонки к ширине TableView
-        ui->playlist_view->horizontalHeader()->setStretchLastSection(true);
-
-        ui->playlists_view->horizontalHeader()->hide();
-        ui->playlists_view->verticalHeader()->setVisible(false);                  // Скрываем нумерацию строк
-        ui->playlists_view->setSelectionBehavior(QAbstractItemView::SelectRows);  // Включаем выделение строк
-        ui->playlists_view->setSelectionMode(QAbstractItemView::SingleSelection); // Разрешаем выделять только одну строку
-        ui->playlists_view->setEditTriggers(QAbstractItemView::NoEditTriggers);   // Отключаем редактирование
+    ui->playlist_view->horizontalHeader()->hide();
+    ui->playlist_view->verticalHeader()->setVisible(false);                  // Скрываем нумерацию строк
+    ui->playlist_view->setSelectionBehavior(QAbstractItemView::SelectRows);  // Включаем выделение строк
+    ui->playlist_view->setSelectionMode(QAbstractItemView::SingleSelection); // Разрешаем выделять только одну строку
+    ui->playlist_view->setEditTriggers(QAbstractItemView::NoEditTriggers);   // Отключаем редактирование
     // Включаем подгонку размера последней видимой колонки к ширине TableView
-//    /// коннекты для кнопок сворачивания/максимизации/минимизации/закрытия
-        ui->playlists_view->horizontalHeader()->setStretchLastSection(true);
+    ui->playlist_view->horizontalHeader()->setStretchLastSection(true);
 
+    ui->playlists_view->horizontalHeader()->hide();
+    ui->playlists_view->verticalHeader()->setVisible(false);                  // Скрываем нумерацию строк
+    ui->playlists_view->setSelectionBehavior(QAbstractItemView::SelectRows);  // Включаем выделение строк
+    ui->playlists_view->setSelectionMode(QAbstractItemView::SingleSelection); // Разрешаем выделять только одну строку
+    ui->playlists_view->setEditTriggers(QAbstractItemView::NoEditTriggers);   // Отключаем редактирование
+    // Включаем подгонку размера последней видимой колонки к ширине TableView
+    ui->playlists_view->horizontalHeader()->setStretchLastSection(true);
+    ui->playlists_view->setSortingEnabled(true);
 
-
-
-           // коннекты для кнопок сворачивания/максимизации/минимизации/закрытия
+    // коннекты для кнопок сворачивания/максимизации/минимизации/закрытия
     connect(ui->btn_minimize, &QToolButton::clicked, this, &QWidget::showMinimized);
     connect(ui->btn_maximize, &QToolButton::clicked, [this](){
         if (this->isMaximized()) {
@@ -115,16 +112,16 @@ void MainWindow::setPreviousPosition(QPoint previousPosition)
     emit previousPositionChanged(previousPosition);
 }
 
-void MainWindow::mousePressEvent(QMouseEvent *event)
+void MainWindow::mousePressEvent(QMouseEvent* event)
 {
-    if (event->button() == Qt::LeftButton ) {
+    if (event->button() == Qt::LeftButton) {
         m_leftMouseButtonPressed = checkResizableField(event);
         setPreviousPosition(event->pos());
     }
     return QWidget::mousePressEvent(event);
 }
 
-void MainWindow::mouseReleaseEvent(QMouseEvent *event)
+void MainWindow::mouseReleaseEvent(QMouseEvent* event)
 {
     if (event->button() == Qt::LeftButton) {
         m_leftMouseButtonPressed = None;
@@ -132,7 +129,7 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *event)
     return QWidget::mouseReleaseEvent(event);
 }
 
-void MainWindow::mouseMoveEvent(QMouseEvent *event)
+void MainWindow::mouseMoveEvent(QMouseEvent* event)
 {
     switch (m_leftMouseButtonPressed) {
     case Move: {
@@ -153,8 +150,8 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
     }
     case Top: {
         if (!isMaximized()) {
-        auto dy = event->y() - m_previousPosition.y();
-        setGeometry(x(), y() + dy, width(), height() - dy);
+            auto dy = event->y() - m_previousPosition.y();
+            setGeometry(x(), y() + dy, width(), height() - dy);
         }
         break;
     }
@@ -188,7 +185,7 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
     return QWidget::mouseMoveEvent(event);
 }
 
-MainWindow::MouseType MainWindow::checkResizableField(QMouseEvent *event)
+MainWindow::MouseType MainWindow::checkResizableField(QMouseEvent* event)
 {
     QPointF position = event->screenPos();
     qreal x = this->x();
@@ -225,10 +222,11 @@ MainWindow::MouseType MainWindow::checkResizableField(QMouseEvent *event)
 
 QString MainWindow::get_folder()
 {
-    QString dir = QFileDialog::getExistingDirectory(this, tr("Open Directory"),
-                                                QStandardPaths::standardLocations(QStandardPaths::DownloadLocation).first(),
-                                                QFileDialog::ShowDirsOnly
-                                                | QFileDialog::DontResolveSymlinks);
+    QString dir = QFileDialog::getExistingDirectory(this, 
+    												tr("Open Directory"),
+    												QStandardPaths::standardLocations(QStandardPaths::DownloadLocation).first(),
+                                      				QFileDialog::ShowDirsOnly
+                                      				| QFileDialog::DontResolveSymlinks);
 
     return dir;
 }
@@ -236,9 +234,9 @@ QString MainWindow::get_folder()
 QString MainWindow::get_file()
 {
     return QFileDialog::getOpenFileName(this,
-                                          tr("Open file"),
-                                          QStandardPaths::writableLocation(QStandardPaths::DownloadLocation),
-                                          tr("Audio Files (*.mp3)"));
+    									tr("Open File"),
+    									QStandardPaths::writableLocation(QStandardPaths::DownloadLocation),
+    									tr("Audio Files (*.mp3)"));
 }
 
 void MainWindow::set_play_button()

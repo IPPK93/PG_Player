@@ -1,8 +1,6 @@
 #include "filesystem_handler.h"
 #include <QUrl>
-#include <QStandardItem>
 #include <QDir>
-#include <QList>
 
 /*!
  * \brief FSHandler::get_music
@@ -30,17 +28,3 @@ QStringList FSHandler::get_music_filenames(const QString& folder_path)
 
     return music_files;
 }
-
-//QList<QList<QStandardItem*>>* FSHandler::get_playlist_data_info(const QStringList& path)
-//{
-//    QList<QList<QStandardItem*>>* data_info = new QList<QList<QStandardItem*>>;
-//    foreach(QString filepath, path)
-//    {
-//        QList<QStandardItem*> items;
-//        items.append(new QStandardItem(QDir(filepath).dirName()));
-//        items.append(new QStandardItem(filepath));
-//        data_info->push_back(items);
-//    }
-
-//    return data_info;
-//}

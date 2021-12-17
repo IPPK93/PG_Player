@@ -5,7 +5,13 @@
 #include "track_controller.h"
 #include "playlists_manager.h"
 #include <QObject>
-#include <QStringList>
+#include <QString>
+#include <QList>
+#include <QMap>
+#include <QMediaPlaylist>
+#include <QModelIndex>
+#include <QModelIndexList>
+#include <QStandardItemModel>
 
 /*!
  * \brief The Core class
@@ -30,7 +36,9 @@ public:
     QMediaPlaylist* default_playlist();
     QStandardItemModel* cur_playlist_model();
     QStandardItemModel* playlists_model();
+    QMap<QModelIndex, QList<QString>> titles();
 
+    void create_playlist(QModelIndexList& indices);
     virtual ~Core() override;
 };
 

@@ -19,7 +19,6 @@ SOURCES += \
     Core/core.cpp \
     Core/filesystem_handler.cpp \
     Core/playlists_manager.cpp \
-    Core/timer.cpp \
     Core/track_controller.cpp \
     main.cpp \
     UI/mainwindow.cpp \
@@ -32,7 +31,6 @@ HEADERS += \
     UI/mainwindow.h \
     UI/stylehelper.h\
     Core/playlists_manager.h \
-    Core/timer.h \
     Core/track_controller.h \
     player.h
 

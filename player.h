@@ -3,7 +3,7 @@
 
 #include "Core/core.h"
 #include "UI/mainwindow.h"
-#include <QStringList>
+#include <QObject>
 
 /*!
  * \brief The Player class
@@ -26,9 +26,9 @@ public slots:
     void handle_file();
     void sort_button();
     void addp_button();
+    void connect_playlist();
 
 private:
-    bool music_exist = false;
     bool sort_clicked = false;
     bool play_clicked = false;
     int shuffle_clicked = 0;
