@@ -41,6 +41,7 @@ public:
        const QToolButton* get_stop_button();
        const QToolButton* get_shuffle_button();
        const QToolButton* get_sort_button();
+       const QToolButton* get_addp_button();
 
        const QSlider* get_slider_vol();
        const QSlider* get_slider_track();
