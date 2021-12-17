@@ -47,8 +47,8 @@ m_leftMouseButtonPressed(None)
     ui->btn_addp->setStyleSheet(StyleHelper::getAddpStyleSheet());
     ui->playlists_view->setStyleSheet(StyleHelper::getTableView1StyleSheet());
     ui->playlist_view->setStyleSheet(StyleHelper::getTableViewStyleSheet());
-    ui->btn_add_file->setText(tr("Добавить"));
-    ui->btn_add_folder->setText(tr("Добавить папку"));
+    ui->btn_add_file->setText(tr("Add file"));
+    ui->btn_add_folder->setText(tr("Add folder"));
     ui->btn_sort->setCursor(Qt::PointingHandCursor);
     ui->btn_shuffle->setCursor(Qt::PointingHandCursor);
     ui->btn_addp->setCursor(Qt::PointingHandCursor);
@@ -326,6 +326,11 @@ const QToolButton* MainWindow::get_stop_button()
 const QToolButton* MainWindow::get_sort_button()
 {
     return ui->btn_sort;
+}
+
+const QToolButton* MainWindow::get_addp_button()
+{
+    return ui->btn_addp;
 }
 
 QTableView* MainWindow::get_playlist_view()
