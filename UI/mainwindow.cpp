@@ -50,7 +50,6 @@ m_leftMouseButtonPressed(None)
     ui->playlist_view->setStyleSheet(StyleHelper::getTableViewStyleSheet());
     ui->btn_add_file->setText(tr("Add file"));
     ui->btn_add_folder->setText(tr("Add folder"));
-
     ui->btn_sort->setCursor(Qt::PointingHandCursor);
     ui->btn_shuffle->setCursor(Qt::PointingHandCursor);
     ui->btn_addp->setCursor(Qt::PointingHandCursor);
@@ -58,6 +57,7 @@ m_leftMouseButtonPressed(None)
     ui->btn_previous->setCursor(Qt::PointingHandCursor);
     ui->btn_stop->setCursor(Qt::PointingHandCursor);
     ui->btn_play->setCursor(Qt::PointingHandCursor);
+
 
     ui->horizontalLayout->setSpacing(6);
     ui->playlist_view->horizontalHeader()->hide();
@@ -222,11 +222,11 @@ MainWindow::MouseType MainWindow::checkResizableField(QMouseEvent* event)
 
 QString MainWindow::get_folder()
 {
-    QString dir = QFileDialog::getExistingDirectory(this, 
-    												                        tr("Open Directory"),
-    												                        QStandardPaths::standardLocations(QStandardPaths::DownloadLocation).first(),
-                                      				      QFileDialog::ShowDirsOnly
-                                      				      | QFileDialog::DontResolveSymlinks);
+    QString dir = QFileDialog::getExistingDirectory(this,
+                                                    tr("Open Directory"),
+                                                    QStandardPaths::standardLocations(QStandardPaths::DownloadLocation).first(),
+                                                    QFileDialog::ShowDirsOnly
+                                                    | QFileDialog::DontResolveSymlinks);
 
     return dir;
 }
@@ -340,3 +340,4 @@ QTableView* MainWindow::get_playlists_view()
 {
     return ui->playlists_view;
 }
+
