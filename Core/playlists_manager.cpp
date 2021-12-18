@@ -46,8 +46,9 @@ void PlaylistsManager::create_playlist(QModelIndexList& indices)
 
 PlaylistsManager::~PlaylistsManager()
 {
-    for(int i = 0; i < playlists->mediaCount(); ++i)
+    for(int i = playlists->mediaCount() - 1; i >= 0 ; ++i)
         playlists->removeMedia(i);
     delete playlists_model;
     delete cur_playlist_model;
+    delete playlists;
 }
